@@ -31,20 +31,23 @@ public class Principal {
 				switch (opc) {
 				case 1:
 					car.arrancar();
+					System.out.println();
 					break;
 				case 2:
-					
-					
+					car.acelerar();
+					System.out.println();
 					break;
 				case 3:
-					
+					car.frenar();
+					System.out.println();
 					break;
 				case 4:
-					
+					car.rearrancar();
+					System.out.println();
 					break;
 				}
 				
-			} while (car.getKmRecorridos()>=car.getDistanciaCarrera());
+			} while (car.getKmRecorridos()<=car.getDistanciaCarrera());
 
 		
 
