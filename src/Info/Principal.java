@@ -38,12 +38,10 @@ public class Principal {
 					System.out.println();
 					break;
 				case 3:
-					car.frenar();
-					System.out.println();
+					
 					break;
 				case 4:
-					car.rearrancar();
-					System.out.println();
+					
 					break;
 				}
 				
