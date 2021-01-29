@@ -113,12 +113,48 @@ public class Coche {
 		}
 		
 	}
+	
+	public void frenar() {
+		
+		switch (this.getEstadoCoche()) {
+		
+		case "PARADO":
+			System.out.println("Para acelerar, primero debes arrancar el coche en el turno siguiente");
+			break;
+		
+		case "MARCHA":
+			double random = Math.random()*this.POTENCIA+1;
+			int acel = (int)Math.floor(random);
+			velocidad-=acel;
+			if (velocidad>200) {
+				estadoCoche = "ACCIDENTADO";
+				velocidad=0;
+			}else {
+				kmRecorridos+=acel;
+			}
+			break;
+			
+		case "ACCIDENTADO":
+			System.out.println("Para poder acelerar, debes rearrancar el coche en el turno siguiente");
+			break;
+			
+		case "TERMINADO":
+			System.out.println("Ya has terminado la carrera");
+			break;
+		}
+		
+	}
+	
 
-	
-	
-	
+	public void rearrancar() {
+		
+		if (this.estadoCoche.equalsIgnoreCase("ACCIDENTADO") && this.estadoCoche!="TERMINADO" ) {
+			this.estadoCoche="MARCHA";
+		}
 		
 		
+	}
+	
 }
 	
 
