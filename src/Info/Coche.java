@@ -9,19 +9,24 @@ public class Coche {
 	private final int POTENCIA=50;
 	private int velocidad;
 	private int kmRecorridos;
+	private boolean humano;
 
 
-	public Coche(String nombrePiloto, int dorsal) {
+	public Coche(String nombrePiloto, int dorsal, int distancia, boolean humano) {
 		super();
 		this.nombrePiloto = nombrePiloto;
 		this.dorsal = dorsal;
 		this.estadoCoche="PARADO";
 		this.velocidad=0;
 		this.kmRecorridos=0;
-		distanciaCarrera = 300; //De momento
+		distanciaCarrera = distancia; //De momento
+		this.humano = humano;
 	}
 
-
+	public boolean isHumano() {
+		return humano;
+	}
+	
 	public String getNombrePiloto() {
 		return nombrePiloto;
 	}
@@ -55,6 +60,7 @@ public class Coche {
 	public int getDistanciaCarrera() {
 		return distanciaCarrera;
 	}
+
 	public int getPotencia() {
 		return POTENCIA;
 	}
@@ -85,7 +91,7 @@ public class Coche {
 
 	public void acelerar() {
 		
-		switch (this.getEstadoCoche()) {
+		switch (this.getEstadoCoche().toUpperCase()) {
 		
 		case "PARADO":
 			System.out.println("Para acelerar, primero debes arrancar el coche en el turno siguiente");
@@ -101,10 +107,14 @@ public class Coche {
 			}else {
 				kmRecorridos+=acel;
 			}
+			if (this.kmRecorridos >= this.distanciaCarrera) {
+				this.estadoCoche = "TERMINADO";
+			}
+			
 			break;
 			
 		case "ACCIDENTADO":
-			System.out.println("Para poder acelerar, debes rearrancar el coche en el turno siguiente");
+			System.out.println("Te has estampao animal, tienes que rearrancar");
 			break;
 			
 		case "TERMINADO":
@@ -119,23 +129,31 @@ public class Coche {
 		switch (this.getEstadoCoche()) {
 		
 		case "PARADO":
-			System.out.println("Para acelerar, primero debes arrancar el coche en el turno siguiente");
+			System.out.println("Te has estampao animal");
 			break;
 		
 		case "MARCHA":
 			double random = Math.random()*this.POTENCIA+1;
 			int acel = (int)Math.floor(random);
+			int velocidad = this.getVelocidad();
+			int kms = this.getKmRecorridos();
 			velocidad-=acel;
-			if (velocidad>200) {
-				estadoCoche = "ACCIDENTADO";
-				velocidad=0;
+			if (velocidad < 0) {
+				this.setVelocidad(0);
+				this.setEstadoCoche("Estas parado.");
+				System.out.println("Tu velocidad es de " + this.getVelocidad());
 			}else {
-				kmRecorridos+=acel;
+				this.setVelocidad(velocidad);
+				this.setKmRecorridos(kms+velocidad);
+				System.out.println("Vas a " + this.getVelocidad() + " km/h");
+			}
+			if (this.kmRecorridos >= this.distanciaCarrera) {
+				this.estadoCoche = "TERMINADO";
 			}
 			break;
 			
 		case "ACCIDENTADO":
-			System.out.println("Para poder acelerar, debes rearrancar el coche en el turno siguiente");
+			System.out.println("Te has estampao animal");
 			break;
 			
 		case "TERMINADO":
@@ -150,10 +168,20 @@ public class Coche {
 		
 		if (this.estadoCoche.equalsIgnoreCase("ACCIDENTADO") && this.estadoCoche!="TERMINADO" ) {
 			this.estadoCoche="MARCHA";
+			System.out.println("Has rearrancado");
 		}
 		
 		
 	}
+
+
+	@Override
+	public String toString() {
+		return "Coche [nombrePiloto=" + nombrePiloto + ", dorsal=" + dorsal +", velocidad=" + velocidad
+				+ ", kmRecorridos=" + kmRecorridos + "]";
+	}
+	
+	
 	
 }
 	

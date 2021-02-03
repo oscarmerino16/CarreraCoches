@@ -4,53 +4,83 @@ import java.util.Scanner;
 
 public class Principal {
 
-		
-		public static int pintaMenu() {
-			int opc =0;
-			Scanner leer = new Scanner(System.in);
-			
-			do {
-				System.out.println("Pulsa 1 para arrancar");
-				System.out.println("Pulsa 2 para acelerar");
-				System.out.println("Pulsa 3 para frenar");
-				System.out.println("Pulsa 4 para rearrancar");
-				opc = leer.nextInt();
-			} while (opc<1 || opc>4);
-			return opc;
-		}
-		
-		
+	
 		public static void main(String[] args) {
 			
-			Coche car = new Coche("Yo", 23);
-			int opc=0, km=car.getKmRecorridos();
+			Scanner leer = new Scanner(System.in);
 			
+			Carrerica c = null;
+			int opc1=0, opc=0;
+			Coche car;
 			
 			do {
-				opc=pintaMenu();
-				switch (opc) {
-				case 1:
-					car.arrancar();
-					System.out.println();
-					break;
-				case 2:
-					car.acelerar();
-					System.out.println();
-					break;
-				case 3:
-					car.frenar();
-					System.out.println();
-					break;
-				case 4:
-					car.rearrancar();
-					System.out.println();
-					break;
-				}
-				
-			} while (car.getKmRecorridos()<=car.getDistanciaCarrera());
+	            opc1=Menu.pintaMenu();
+	            switch (opc1) {
+	            case 1:
+	                //Menu.pintaMenuCarrera();
+	            	c.empezarCarrera();
+	                do {
 
-		
 
+	                    for (int i = 0; i < c.getvCoches().length; i++) {
+	                        if (c.getvCoches()[i]!=null) {
+	                            car=c.getvCoches()[i];
+
+	                            if (car.isHumano()) {
+	                                //Juega humano
+	                                opc=Menu.pintaMenuCarrera();
+	                                System.out.println(car.toString());
+	                                switch (opc) {
+	                                
+	                                case 1:
+	                                    car.acelerar();
+	                                    System.out.println();
+	                                    break;
+	                                case 2:
+	                                    car.frenar();
+	                                    System.out.println();
+	                                    break;
+	                                case 3:
+	                                    car.rearrancar();
+	                                    System.out.println();
+	                                    break;
+	                                }
+	                            }else {
+	                                //Juega Maquina aleatorio
+	                            }
+
+
+	                        }
+
+	                    }
+	           } while (!c.comprobarCarreraTerminada());
+
+	                break;
+	            case 2:
+	                c.addCoche();
+	                break;
+	            case 3:
+	                String nombreCarrera;
+	                int kilometros;
+
+	                System.out.println("dime el nombre de la carrera");
+	                nombreCarrera= leer.next();
+
+	                System.out.println("Dime la distancia de la carrera");
+	                kilometros=leer.nextInt();
+
+	                c = new Carrerica(nombreCarrera, kilometros);
+	                break;
+	            case 4:
+	                System.out.println("salir");
+	                opc1=4;
+	                break;
+
+	            default:
+	                break;
+	            }
+	        } while (opc1!=4);
+	
 	}
 
 }
