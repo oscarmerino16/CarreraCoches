@@ -1,5 +1,6 @@
 package Info;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Principal {
@@ -47,6 +48,17 @@ public class Principal {
 	                                }
 	                            }else {
 	                                //Juega Maquina aleatorio
+	                            	Random r = new Random();
+									switch (r.nextInt(2)) {
+									case 0: {
+										car.acelerar();
+										break;
+									}
+									case 1: {
+										car.frenar();
+										break;
+									}
+									}
 	                            }
 
 

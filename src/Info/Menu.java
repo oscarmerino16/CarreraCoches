@@ -11,8 +11,8 @@ public class Menu {
 
         do {
             System.out.println("Pulsa 1 para Jugar");
-            System.out.println("Pulsa 2 para aÃ±adir un jugador");
-            System.out.println("Pulsa 3 para aÃ±adir el nombre de la carrera");
+            System.out.println("Pulsa 2 para añadir un jugador");
+            System.out.println("Pulsa 3 para añadir el nombre de la carrera");
             System.out.println("Pulsa 4 para salir");
             opc1 = leer.nextInt();
         } while (opc1 < 1 || opc1 > 4);

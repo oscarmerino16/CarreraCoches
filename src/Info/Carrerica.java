@@ -23,8 +23,9 @@ public class Carrerica {
     	
     	for (int i = 0; i < vCoches.length; i++) {
 			
-    		String nombre="";
+    		String nombre="", eshumano="";
     		int  dorsal=0;
+    		boolean humano = false;
     		
     		if (vCoches[i]==null) {
 				System.out.println("Dime el nombre del corredor");
@@ -33,6 +34,17 @@ public class Carrerica {
 				System.out.println("Dime el dorsal del corredor");
 				dorsal = leer.nextInt();
 				}while (!comprobarDorsal(dorsal));
+				
+
+				System.out.println("Es jugador(SI) o maquina(NO)");
+				eshumano = leer.next();
+				
+				if (eshumano.equalsIgnoreCase("SI")) {
+					humano = true;
+				}else {
+					humano = false;
+				}
+				
 				
 				int pos = buscarHueco();
 				if (pos == -1) {
