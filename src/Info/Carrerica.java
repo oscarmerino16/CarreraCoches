@@ -136,4 +136,17 @@ public class Carrerica {
     
     
 	}
+	public void ganador() {
+        for (Coche coche : vCoches) {
+            if (coche != null && coche.getEstadoCoche().equalsIgnoreCase("Terminado")) {
+                System.out.println("El ganador es: " + coche );
+                
+                break;
+            }
+        }
+    }
+	
+	
+	
+	
 }

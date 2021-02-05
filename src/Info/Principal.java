@@ -60,13 +60,15 @@ public class Principal {
 									}
 									}
 	                            }
-
+	                            
 
 	                        }
 
 	                    }
 	           } while (!c.comprobarCarreraTerminada());
-
+	                System.out.println("La carrera ha terminado");
+	                c.ganador();
+	                opc1=4;
 	                break;
 	            case 2:
 	                c.addCoche();

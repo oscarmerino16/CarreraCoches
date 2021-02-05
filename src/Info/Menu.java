@@ -10,9 +10,12 @@ public class Menu {
         Scanner leer = new Scanner(System.in);
 
         do {
+        	System.out.println("---Menu Carrera---");
+        	System.out.println("Para poder jugar primero debe añadir el nombre de la carrera, "
+        			+ "despues añadir los jugadores que usted desee y a continuacion ya puede jugar la carrera");
             System.out.println("Pulsa 1 para Jugar");
-            System.out.println("Pulsa 2 para a�adir un jugador");
-            System.out.println("Pulsa 3 para a�adir el nombre de la carrera");
+            System.out.println("Pulsa 2 para añadir un jugador");
+            System.out.println("Pulsa 3 para añadir el nombre de la carrera");
             System.out.println("Pulsa 4 para salir");
             opc1 = leer.nextInt();
         } while (opc1 < 1 || opc1 > 4);

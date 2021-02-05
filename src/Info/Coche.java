@@ -177,7 +177,7 @@ public class Coche {
 
 	@Override
 	public String toString() {
-		return "Coche [nombrePiloto=" + nombrePiloto + ", dorsal=" + dorsal +", velocidad=" + velocidad
+		return "Coche [nombrePiloto=" + nombrePiloto + ", dorsal=" + dorsal + ", estadoCoche=" + estadoCoche + ", velocidad=" + velocidad
 				+ ", kmRecorridos=" + kmRecorridos + "]";
 	}
 	
